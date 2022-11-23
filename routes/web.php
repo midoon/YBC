@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+
+//admin
+Route::get('/registration/admin', function(){ return view('register.admin');});
+Route::post('/registration/admin', [GuestController::class, "doRegister"]);
+Route::get('/login/admin', function(){ return view('login.admin');});
+Route::post('/login/admin', [LoginController::class, "sendAdmin"]);
+Route::get("/admin", function(){
+    return view('admin.dashboard');
+});
+
+//wisatawan
+Route::get('/registration/wisatawan', function(){ return view('register.wisatawan');});
+Route::post('/registration/wisatawan', [GuestController::class, "doRegister"]);
+Route::get('/login/wisatawan', function(){ return view('login.wisatawan');});
+Route::post('/login/wisatawan', [LoginController::class, "sendWisatawan"]);
