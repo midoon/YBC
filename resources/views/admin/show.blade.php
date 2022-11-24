@@ -67,14 +67,13 @@
       </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+      {{-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Cafe Kamu</h1>
       </div>
 
       <div class="row">
-        @foreach ($cafes as $cafe)
-          @if ($cafe->user_id == auth()->user()->id)
+        
           <div class="col-md-3">
             <a href="/show-admin/{{$cafe->id}}" class="text-decoration-none text-black">
               <div class="card" >
@@ -82,8 +81,8 @@
                 <div class="card-body">
                   <h5 class="card-title">{{$cafe->name}}</h5>
                   <p class="card-text">{{$cafe->description}}</p>
-                  <div class="d-flex flex-row-reverse mt-2">
-                    <a href="/update/{{$cafe->id}}" class="btn btn-warning text-white mx-2">Edit</a>
+                  <div class="flex">
+                    <a href="#" class="btn btn-success">Edit</a>
                     <form action="/delete/{{$cafe->id}}" method="post" class="d-inline">
                       @csrf
                       @method('delete')
@@ -96,11 +95,53 @@
               </div>
             </a>
           </div>
-          @endif
-          @endforeach
+         
       </div>
       
       
+      </div> --}}
+
+      <div class="row justify-content-center mt-3">
+        <div class="col-10">
+            <div class="card mb-3">
+                <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-10">
+                        <h5 class="card-title">{{$cafe->name}}</h5>
+                        <p class="card-text">{{$cafe->description}}</p>
+                    </div>
+                    <div class="col-2">
+                        <a href="/update/{{$cafe->id}}" class="btn btn-warning">Edit</a>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col">Nama</th>
+                          <th scope="col">Kategori</th>
+                          <th scope="col">Halal</th>
+                          <th scope="col">Harga</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($menus as $menu)
+                        <tr>
+                            <td>{{$menu->name}}</td>
+                            <td>{{$menu->category}}</td>
+                            <td>{{$menu->halal}}</td>
+                            <td>{{$menu->price}}</td>
+                          </tr>
+                        @endforeach
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+        </div>
       </div>
     </main>
   </div>

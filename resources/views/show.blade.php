@@ -71,21 +71,46 @@
     {{-- end navbar --}}
 
     <div class="container">
-      <div class="row">
-        @foreach ($cafes as $cafe)
-          <div class="col-md-3">
-            <a href="/show/{{$cafe->id}}" class="text-decoration-none text-black">
-              <div class="card" >
-                <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{$cafe->name}}</h5>
-                  <p class="card-text">{{$cafe->description}}</p>
-                </div>
-              </div>
-            </a>
+        <div class="row justify-content-center mt-3">
+            <div class="col-10">
+                <div class="card mb-3">
+                    <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-10">
+                            <h5 class="card-title">{{$cafe->name}}</h5>
+                            <p class="card-text">{{$cafe->description}}</p>
+                        </div>
+                        
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                          <thead>
+                            <tr>
+                              <th scope="col">Nama</th>
+                              <th scope="col">Kategori</th>
+                              <th scope="col">Halal</th>
+                              <th scope="col">Harga</th>
+                              
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ($menus as $menu)
+                            <tr>
+                                <td>{{$menu->name}}</td>
+                                <td>{{$menu->category}}</td>
+                                <td>{{$menu->halal}}</td>
+                                <td>{{$menu->price}}</td>
+                              </tr>
+                            @endforeach
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+            </div>
           </div>
-        @endforeach
-      </div>
     </div>
     
 

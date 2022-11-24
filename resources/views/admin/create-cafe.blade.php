@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard Admin</title>
+    <title>Create Cafe</title>
 
     
 
@@ -51,13 +51,13 @@
           </li>
           @endauth
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/admin">
+            <a class="nav-link " aria-current="page" href="/admin">
               <span data-feather="coffee"></span>
               Cafe Kamu
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/create-cafe">
+            <a class="nav-link active" href="/create-cafe">
               <span data-feather="plus"></span>
               Tambah Cafe
             </a>
@@ -69,38 +69,36 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Cafe Kamu</h1>
+        <h1 class="h2">Tambah Cafe</h1>
       </div>
 
       <div class="row">
-        @foreach ($cafes as $cafe)
-          @if ($cafe->user_id == auth()->user()->id)
-          <div class="col-md-3">
-            <a href="/show-admin/{{$cafe->id}}" class="text-decoration-none text-black">
-              <div class="card" >
-                <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{$cafe->name}}</h5>
-                  <p class="card-text">{{$cafe->description}}</p>
-                  <div class="d-flex flex-row-reverse mt-2">
-                    <a href="/update/{{$cafe->id}}" class="btn btn-warning text-white mx-2">Edit</a>
-                    <form action="/delete/{{$cafe->id}}" method="post" class="d-inline">
-                      @csrf
-                      @method('delete')
-                      <button class="btn btn-danger">
-                        Hapus
-                      </button>
-                    </form>
-                  </div>
+        <div class="col-md-6">
+            <form action="/create-cafe" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                  <label  class="form-label">Nama Cafe</label>
+                  <input type="text" class="form-control" name="name" required>
+                  
                 </div>
-              </div>
-            </a>
-          </div>
-          @endif
-          @endforeach
+                <div class="mb-3">
+                  <label  class="form-label">Deskripsi Cafe</label>
+                  <textarea class="form-control" style="height: 100px" name="description" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Upload foto cafe</label>
+                    <input class="form-control @error('photo') is-invalid @enderror" type="file" id="photo" name="photo" required>
+                    @error('photo')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div>
+                <input type="number" name="user_id" value="{{auth()->user()->id}}" hidden>
+                <button type="submit" class="btn btn-primary">Buat</button>
+              </form>
+        </div>
       </div>
-      
-      
       </div>
     </main>
   </div>
