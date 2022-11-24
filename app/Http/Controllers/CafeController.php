@@ -9,7 +9,7 @@ class CafeController extends Controller
 {
     public function index(){
         $cafe = Cafe::all();
-        return view("dashboard", compact(["cafe"]));
+        return view("admin.dashboard", compact(["cafe"]));
     }
 
     public function show($id){
