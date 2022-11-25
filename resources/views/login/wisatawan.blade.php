@@ -7,21 +7,23 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/register/admin.css">
+    <link rel="stylesheet" href="/css/login/wisatawan.css">
 
     <title>Hello, world!</title>
   </head>
   <body>
     
 
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-4 ">
-          @if (session()->has('loginError'))
+    <div class="row justify-content-center mt-5 ">
+        <div class="col-md-8 ">
+          <div class="row kartu" style="background-image: url('/img/bg1.jpg');">
+            <div class="col-6">
+              @if (session()->has('loginError'))
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{session('loginError')}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
-          @endif
+              @endif
             <main class="form-registration">
                 <form action="/login/wisatawan" method="POST">
                     @csrf
@@ -68,6 +70,11 @@
                   <p>Belum mempunyai akun?<a href="/registration/wisatawan"> daftar di sini</a></p>
                 </form>
               </main>
+            </div>
+            <div class="col-6">
+
+            </div>
+          </div>
         </div>
     </div>
       
