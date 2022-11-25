@@ -64,3 +64,4 @@ Route::get('/add-coment/{cafe_id}/{user_id}', function( $cafe_id, $user_id){
     return view('add-coment',compact('cafe') ,['user_id'=>$user_id, 'cafe_id'=>$cafe_id]);
 })->middleware('auth');
 Route::post('/create-feedback', [FeedbackController::class, 'create']);
+Route::get('/show-all-coment/{cafe_id}', [FeedbackController::class, 'index']);
