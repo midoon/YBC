@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="/css/coment/coment.css">
     <title>Hello, world!</title>
   </head>
   <body>
@@ -71,25 +72,64 @@
     {{-- end navbar --}}
 
     <div class="container">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        @foreach ($cafes as $cafe)
-          <div class="col">
-            <a href="/show/{{$cafe->id}}" class="text-decoration-none text-black">
-              <div class="card h-100" >
-                <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-dark">{{$cafe->name}}</h5>
-                  
-                </div>
+      <h5>Beri Umpan balik untukk : {{$cafe->name}}</h5>
+      <div class="row ">
+        <div class="col">
+          <form action="/create-feedback" method="POST">
+            @csrf
+            <div class="mb-3">
+              <label  class="form-label">rating</label>
+              
+              <div class="div  star-container">
+                <input type="radio" class="star" name="rating" id="" value="1" hidden><label class="star-label text-warning"> &#9734;</label>
+                <input type="radio" class="star" name="rating" id="" value="2" hidden><label class="star-label text-warning"> &#9734;</label>
+                <input type="radio" class="star" name="rating" id="" value="3" hidden><label class="star-label text-warning"> &#9734;</label>
+                <input type="radio" class="star" name="rating" id="" value="4" hidden><label class="star-label text-warning"> &#9734;</label>
+                <input type="radio" class="star" name="rating" id="" value="5" hidden><label class="star-label text-warning"> &#9734;</label>
               </div>
-            </a>
-          </div>
-        @endforeach
+  
+            </div>
+            <div class="mb-3">
+              <label  class="form-label">Komentar</label>
+              <textarea class="form-control" style="height: 100px" name="coment" >
+              
+              </textarea>
+            </div>
+            
+            <input type="number" name="cafe_id" value="{{$cafe->id}}" hidden>
+            <input type="number" name="user_id" value="{{auth()->user()->id}}" hidden>
+            <button type="submit" class="btn btn-primary">Buat</button>
+          </form>
+        </div>
       </div>
     </div>
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+      const allStar = document.querySelectorAll('.star-label');
+      const allRadio = document.querySelectorAll('.star');
+      allStar.forEach((s, i) => {
+        
+        s.onclick = function(){
+          let current_star_level = i
+          allStar.forEach((s, j) =>{
+            if(current_star_level >= j){
+              s.innerHTML = '&#9733;'
+              
+              allRadio[i].setAttribute("checked", "checked")
+            } else{
+              s.innerHTML = '&#9734;'
+ 
+              allRadio[i].setAttribute("checked", "checked")
+            }
+          })
+          
+        }
+        
+      });
+    </script>
 
     
   </body>

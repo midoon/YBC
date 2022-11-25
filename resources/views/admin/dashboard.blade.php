@@ -72,16 +72,15 @@
         <h1 class="h2">Cafe Kamu</h1>
       </div>
 
-      <div class="row">
+      <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach ($cafes as $cafe)
           @if ($cafe->user_id == auth()->user()->id)
-          <div class="col-md-3">
+          <div class="col">
             <a href="/show-admin/{{$cafe->id}}" class="text-decoration-none text-black">
-              <div class="card" >
+              <div class="card h-100" >
                 <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{$cafe->name}}</h5>
-                  <p class="card-text">{{$cafe->description}}</p>
                   <div class="d-flex flex-row-reverse mt-2">
                     <a href="/update/{{$cafe->id}}" class="btn btn-warning text-white mx-2">Edit</a>
                     <form action="/delete/{{$cafe->id}}" method="post" class="d-inline">

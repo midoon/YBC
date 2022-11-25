@@ -2,24 +2,18 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CafeController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\WisatawanController;
 use App\Models\Cafe;
+use App\Models\Feedback;
 use App\Models\Menu;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', function () {
     $cafes = Cafe::all();
@@ -60,5 +54,13 @@ Route::post('/logout/wisatawan', [WisatawanController::class, 'doLogout']);
 Route::get('/show/{id}', function($id){
     $cafe = Cafe::find($id);
     $menus = Menu::where('cafe_id', '=', $id)->get();
-    return view('show', compact(['cafe', 'menus']));
+    // $feedbacks = Feedback::where('cafe_id', $id)->get();
+    $feedbacks = DB::table('feedbacks')->select("feedbacks.*","users.name as name")->join('users', 'users.id', '=', 'feedbacks.user_id')->where('feedbacks.cafe_id', '=', $id)->get();
+    return view('show', compact(['cafe', 'menus', 'feedbacks']));
 });
+Route::get('/add-coment/{cafe_id}/{user_id}', function( $cafe_id, $user_id){
+    // dd("test");
+    $cafe = Cafe::find($cafe_id);
+    return view('add-coment',compact('cafe') ,['user_id'=>$user_id, 'cafe_id'=>$cafe_id]);
+})->middleware('auth');
+Route::post('/create-feedback', [FeedbackController::class, 'create']);

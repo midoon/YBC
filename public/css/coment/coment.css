@@ -1,0 +1,7 @@
+.star-label {
+    font-size: 40px;
+}
+
+.star-label:hover {
+    cursor: pointer;
+}

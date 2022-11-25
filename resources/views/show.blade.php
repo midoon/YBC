@@ -20,7 +20,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
@@ -31,7 +31,7 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
-            </li>
+            </li> --}}
           </ul>
 
           <ul class="navbar-nav ms-auto">
@@ -81,9 +81,9 @@
                             <h5 class="card-title">{{$cafe->name}}</h5>
                             <p class="card-text">{{$cafe->description}}</p>
                         </div>
-                        
                       </div>
-                      <div class="table-responsive">
+
+                      <div class="table-responsive mt-3">
                         <table class="table table-striped table-sm">
                           <thead>
                             <tr>
@@ -91,7 +91,6 @@
                               <th scope="col">Kategori</th>
                               <th scope="col">Halal</th>
                               <th scope="col">Harga</th>
-                              
                             </tr>
                           </thead>
                           <tbody>
@@ -107,6 +106,33 @@
                           </tbody>
                         </table>
                       </div>
+
+                      <div class="d-flex flex-row-reverse mt-3">
+                        <a href="#" class="btn btn-success text-white mx-2">Tampilkan <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                        </svg></a>
+                        @auth
+                        <a href="/add-coment/{{$cafe->id}}/{{auth()->user()->id}}" class="btn btn-warning text-white">Tambah <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                        </svg></a>
+                        @endauth
+                      </div>
+
+                      <div class="div mt-2">
+                        <h5 class="mb-3">Umpan balik</h5>
+                        @foreach ($feedbacks as $fb)
+                        <div class="card border-light mb-3" >
+                          <div class="card-header">{{$fb->name}}</div>
+                          <div class="card-body">
+                            <img src="/img/rating/{{$fb->rating}}.png" alt=".." width="100" class="mb-2">
+                            <p class="card-text">{{$fb->coment}}</p>
+                          </div>
+                        </div>
+                        @endforeach
+                      </div>
+
                     </div>
                   </div>
             </div>

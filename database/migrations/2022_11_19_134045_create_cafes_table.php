@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('cafes', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("description");
+            $table->longText("description");
             $table->string("photo");
             $table->foreignId("user_id")->constrained("users")->onDelete('cascade');
             $table->timestamps();
