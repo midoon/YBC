@@ -6,7 +6,8 @@
     <title>Create Cafe</title>
 
     
-
+    {{-- aos --}}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
 
     <!-- Bootstrap core CSS -->
@@ -73,30 +74,40 @@
       </div>
 
       <div class="row">
-        <div class="col-md-6">
-            <form action="/create-cafe" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="mb-3">
-                  <label  class="form-label">Nama Cafe</label>
-                  <input type="text" class="form-control" name="name" required>
-                  
-                </div>
-                <div class="mb-3">
-                  <label  class="form-label">Deskripsi Cafe</label>
-                  <textarea class="form-control" style="height: 100px" name="description" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="photo" class="form-label">Upload foto cafe</label>
-                    <input class="form-control @error('photo') is-invalid @enderror" type="file" id="photo" name="photo" required>
-                    @error('photo')
-                    <div class="invalid-feedback">
-                        {{$message}}
-                    </div>
-                    @enderror
-                </div>
-                <input type="number" name="user_id" value="{{auth()->user()->id}}" hidden>
-                <button type="submit" class="btn btn-primary">Buat</button>
-              </form>
+        <div class="col-12">
+          <div class="card p-5 shadow">
+            <div class="row">
+              <div class="col-md-6" data-aos="fade-right">
+                  <form action="/create-cafe" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      <div class="mb-3">
+                        <label  class="form-label">Nama Cafe</label>
+                        <input type="text" class="form-control" name="name" required>
+                        
+                      </div>
+                      <div class="mb-3">
+                        <label  class="form-label">Deskripsi Cafe</label>
+                        <textarea class="form-control" style="height: 100px" name="description" required></textarea>
+                      </div>
+                      <div class="mb-3">
+                          <label for="photo" class="form-label">Upload foto cafe</label>
+                          <input class="form-control @error('photo') is-invalid @enderror" type="file" id="photo" name="photo" required>
+                          @error('photo')
+                          <div class="invalid-feedback">
+                              {{$message}}
+                          </div>
+                          @enderror
+                      </div>
+                      <input type="number" name="user_id" value="{{auth()->user()->id}}" hidden>
+                      <button type="submit" class="btn btn-dark">Buat</button>
+                    </form>
+              </div>
+              <div class="col-md-6 text-center" data-aos="fade-left">
+                <img src="/img/vector/v3.svg" alt="" width="390" >
+                <p class="mt-3">make your own paradise</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       </div>
@@ -110,5 +121,10 @@
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       
       <script src="/js/dashboard-admin.js"></script>
+
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

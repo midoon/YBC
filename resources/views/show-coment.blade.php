@@ -16,9 +16,9 @@
   </head>
   <body  style="background-color: #9f9f9f">
     {{-- navbar --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="/"><img src="/img/ybc_logo.png" alt="logo" height="50" width="50"></a>
+        <a class="navbar-brand" href="/"><img src="/img/ybc_logow.png" alt="logo" height="50" width="50"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,7 +68,7 @@
             <div class="card p-3 border-dark bg-transparent">
               <a href="/show/{{$feedbacks[0]->cafe_id}}"  class="btn btn-dark  mb-3" style="width: 100px">Kembali</a>
               @foreach ($feedbacks as $fb)
-              <div class="card bg-dark mb-3 shadow" >
+              <div class="card bg-dark mb-3 shadow " data-aos="zoom-in">
                 <div class="card-header text-white">{{$fb->name}}</div>
                 <div class="card-body">
                   <img src="/img/rating/{{$fb->rating}}.png" alt=".." width="100" class="mb-2">

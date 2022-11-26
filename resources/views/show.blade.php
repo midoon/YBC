@@ -15,9 +15,9 @@
   </head>
   <body style="background-color: #9f9f9f">
     {{-- navbar --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
       <div class="container ">
-        <a class="navbar-brand" href="/"><img src="/img/ybc_logo.png" alt="logo" height="50" width="50"></a>
+        <a class="navbar-brand" href="/"><img src="/img/ybc_logow.png" alt="logo" height="50" width="50"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

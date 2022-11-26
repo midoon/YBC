@@ -21,7 +21,7 @@
   </head>
 
 
-  <body>
+  <body style=>
     
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Youtefa Bridge Cafes</a>
@@ -41,10 +41,10 @@
     </div>
   </header>
 
-<div class="container-fluid">
+<div class="container-fluid ">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="position-sticky pt-3">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse ">
+      <div class="position-sticky pt-3 ">
         <ul class="nav flex-column">
           @auth
           <li class="nav-item">
@@ -68,7 +68,7 @@
       </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Cafe Kamu</h1>
       </div>
@@ -78,16 +78,16 @@
           @if ($cafe->user_id == auth()->user()->id)
           <div class="col">
             <a href="/show-admin/{{$cafe->id}}" class="text-decoration-none text-black">
-              <div class="card h-100" >
+              <div class="card h-100 rounded shadow bg-dark" data-aos="zoom-in">
                 <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{$cafe->name}}</h5>
+                  <h5 class="card-title text-white">{{$cafe->name}}</h5>
                   <div class="d-flex flex-row-reverse mt-2">
-                    <a href="/update/{{$cafe->id}}" class="btn btn-warning text-white mx-2">Edit</a>
+                    <a href="/update/{{$cafe->id}}" class="btn btn-outline-warning text-white mx-2">Edit</a>
                     <form action="/delete/{{$cafe->id}}" method="post" class="d-inline">
                       @csrf
                       @method('delete')
-                      <button class="btn btn-danger">
+                      <button class="btn btn-outline-danger">
                         Hapus
                       </button>
                     </form>
@@ -112,5 +112,10 @@
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       
       <script src="/js/dashboard-admin.js"></script>
+
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

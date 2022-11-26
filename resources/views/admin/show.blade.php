@@ -7,7 +7,9 @@
 
     
 
-    
+    {{-- aos --}}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -20,7 +22,7 @@
   </head>
 
 
-  <body>
+  <body style="background-color: #9f9f9f">
     
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Youtefa Bridge Cafes</a>
@@ -42,7 +44,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           @auth
@@ -51,7 +53,7 @@
           </li>
           @endauth
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/admin">
+            <a class="nav-link " aria-current="page" href="/admin">
               <span data-feather="coffee"></span>
               Cafe Kamu
             </a>
@@ -68,57 +70,26 @@
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
-      {{-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Cafe Kamu</h1>
-      </div>
-
-      <div class="row">
-        
-          <div class="col-md-3">
-            <a href="/show-admin/{{$cafe->id}}" class="text-decoration-none text-black">
-              <div class="card" >
-                <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{$cafe->name}}</h5>
-                  <p class="card-text">{{$cafe->description}}</p>
-                  <div class="flex">
-                    <a href="#" class="btn btn-success">Edit</a>
-                    <form action="/delete/{{$cafe->id}}" method="post" class="d-inline">
-                      @csrf
-                      @method('delete')
-                      <button class="btn btn-danger">
-                        Hapus
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-         
-      </div>
       
-      
-      </div> --}}
 
       <div class="row justify-content-center mt-3">
         <div class="col-10">
-            <div class="card mb-3">
+            <div class="card mb-3 bg-dark">
                 <img src="{{asset('storage/'.$cafe->photo)}}" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body text-white">
                   <div class="row">
                     <div class="col-10">
-                        <h5 class="card-title">{{$cafe->name}}</h5>
-                        <p class="card-text">{{$cafe->description}}</p>
+                        <h5 class="card-title" >{{$cafe->name}}</h5>
+                        <p class="card-text" >{{$cafe->description}}</p>
                     </div>
-                    <div class="col-2">
-                        <a href="/update/{{$cafe->id}}" class="btn btn-warning">Edit</a>
-                    </div>
+                  </div>
+                  <div class="my-4 d-flex flex-row-reverse">
+                    <a href="/update/{{$cafe->id}}" class="btn btn-outline-warning">Edit</a>
                   </div>
                   <div class="table-responsive">
                     <table class="table table-striped table-sm">
                       <thead>
-                        <tr>
+                        <tr class="text-white">
                           <th scope="col">Nama</th>
                           <th scope="col">Kategori</th>
                           <th scope="col">Halal</th>
@@ -128,7 +99,7 @@
                       </thead>
                       <tbody>
                         @foreach ($menus as $menu)
-                        <tr>
+                        <tr class="text-white">
                             <td>{{$menu->name}}</td>
                             <td>{{$menu->category}}</td>
                             <td>{{$menu->halal}}</td>
@@ -153,5 +124,9 @@
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       
       <script src="/js/dashboard-admin.js"></script>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

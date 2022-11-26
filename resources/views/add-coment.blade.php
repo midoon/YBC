@@ -17,9 +17,9 @@
   </head>
   <body style="background-color: #9f9f9f">
     {{-- navbar --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
       <div class="container">
-        <a class="navbar-brand" href="/"><img src="/img/ybc_logo.png" alt="logo" height="50" width="50"></a>
+        <a class="navbar-brand" href="/"><img src="/img/ybc_logow.png" alt="logo" height="50" width="50"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,8 +67,8 @@
     <div class="container">
       <div class="row justify-content-center mt-5">
         <div class="col-8">
-          <div class="card p-5 rounded shadow" >
-            <h3 class="text-center mt-3">{{$cafe->name}}</h3>
+          <div class="card p-5 rounded shadow bg-dark" >
+            <h3 class="text-center mt-3 text-white">{{$cafe->name}}</h3>
             
             <div class="row ">
               <div class="col">
@@ -87,16 +87,16 @@
         
                   </div>
                   <div class="mb-3">
-                    <label  class="form-label">Komentar</label>
-                    <textarea class="form-control shadow-sm" style="height: 100px" name="coment" >
+                    <label  class="form-label text-white">Komentar</label>
+                    <textarea class="form-control shadow-sm" style="height: 100px; background-color: rgb(49, 49, 49)" name="coment" data-aos="zoom-in">
                     
                     </textarea>
                   </div>
                   
                   <input type="number" name="cafe_id" value="{{$cafe->id}}" hidden>
                   <input type="number" name="user_id" value="{{auth()->user()->id}}" hidden>
-                  <button type="submit" class="btn btn-dark">Buat feedback</button>
-                  <a href="/show/{{$cafe_id}}"  class="btn btn-dark  " style="width: 100px">Kembali</a>
+                  <button type="submit" class="btn btn-outline-light">Buat feedback</button>
+                  <a href="/show/{{$cafe_id}}"  class="btn btn-outline-light  mx-2" style="width: 100px">Kembali</a>
                 </form>
               </div>
             </div>
