@@ -88,7 +88,7 @@
                   </div>
                   <div class="mb-3">
                     <label  class="form-label text-white">Komentar</label>
-                    <textarea class="form-control shadow-sm" style="height: 100px; background-color: rgb(49, 49, 49)" name="coment" data-aos="zoom-in">
+                    <textarea class="form-control shadow-sm text-white" style="height: 100px; background-color: rgb(49, 49, 49)" name="coment" data-aos="zoom-in">
                     
                     </textarea>
                   </div>
