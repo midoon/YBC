@@ -5,10 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{-- icon --}}
+    <link rel="icon" href="/img/ybc_logow.png" type="image/x-icon">
+
     
     <link rel="stylesheet" href="/css/login/logwis.css">
 
-    <title>Hello, world!</title>
+    <title>Login - Register</title>
   </head>
   <body>
     <div class="container">

@@ -14,7 +14,12 @@ class FeedbackController extends Controller
     }
 
     public function create(Request $request){
-        Feedback::create($request->all());
+        $validatedData = $request->validate([
+            'coment' => 'max:500',
+            'user_id' => 'required',
+            'cafe_id' => 'required'
+        ]);
+        Feedback::create($validatedData);
         return redirect("/show/$request->cafe_id");
         
     }
